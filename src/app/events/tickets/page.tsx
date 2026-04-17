@@ -17,26 +17,27 @@ export default function TicketsPage() {
   const [q, setQ] = useState('');
   const [localTickets, setLocalTickets] = useState<Ticket[]>(mockTickets);
 
-  const event = mockUpcomingEvents.find((e) => e.id === 'e_1')!;
+  const event = mockUpcomingEvents[0];
+  const eventId = event.id;
 
   const filtered = useMemo(() => {
     return localTickets.filter((t) => {
-      if (t.event_id !== 'e_1') return false;
+      if (t.event_id !== eventId) return false;
       if (q === '') return true;
       return t.member_name.toLowerCase().includes(q.toLowerCase())
           || t.qr_code.toLowerCase().includes(q.toLowerCase());
     });
-  }, [q, localTickets]);
+  }, [q, localTickets, eventId]);
 
   const stats = useMemo(() => {
-    const forEvent = localTickets.filter((t) => t.event_id === 'e_1');
+    const forEvent = localTickets.filter((t) => t.event_id === eventId);
     return {
       total:      forEvent.length,
       checkedIn:  forEvent.filter((t) => t.status === 'checked_in').length,
       confirmed:  forEvent.filter((t) => t.status === 'confirmed').length,
       cancelled:  forEvent.filter((t) => t.status === 'cancelled').length,
     };
-  }, [localTickets]);
+  }, [localTickets, eventId]);
 
   const progress = Math.round((stats.checkedIn / (stats.total - stats.cancelled || 1)) * 100);
 
