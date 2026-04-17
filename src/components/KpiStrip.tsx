@@ -46,7 +46,7 @@ export default function KpiStrip() {
           {k.delta && (
             <div
               className={`kpi-delta ${k.delta.direction}`}
-              style={k.accent ? { color: 'var(--accent)' } : undefined}
+              style={k.accent ? { color: 'var(--paper)' } : undefined}
             >
               {k.delta.direction === 'up' && <ArrowUp size={12} strokeWidth={2.5} />}
               {k.delta.direction === 'down' && <ArrowDown size={12} strokeWidth={2.5} />}
