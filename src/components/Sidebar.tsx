@@ -32,11 +32,16 @@ const nav: Group[] = [
   ]},
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  mobileOpen?: boolean;
+  onMobileClose?: () => void;
+}
+
+export default function Sidebar({ mobileOpen = false }: SidebarProps = {}) {
   const pathname = usePathname();
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${mobileOpen ? 'mobile-open' : ''}`}>
       <div className="sidebar-logo">
         <div style={{
           display: 'flex', alignItems: 'center', gap: 'var(--sp-3)',

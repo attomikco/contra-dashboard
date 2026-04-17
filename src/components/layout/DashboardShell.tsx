@@ -1,5 +1,4 @@
-import Sidebar from '@/components/Sidebar';
-import Topbar from '@/components/Topbar';
+import ResponsiveLayout from '@/components/ResponsiveLayout';
 
 type Props = {
   title: string;
@@ -11,22 +10,18 @@ type Props = {
 
 export default function DashboardShell({ title, subtitle, actions, hero, children }: Props) {
   return (
-    <div className="app-layout">
-      <Sidebar />
-      <div className="main">
-        <Topbar />
-        <div className="page-content">
-          {hero}
-          <div className="page-header">
-            <div>
-              <h1>{title}</h1>
-              {subtitle && <p className="page-subtitle">{subtitle}</p>}
-            </div>
-            {actions && <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>{actions}</div>}
+    <ResponsiveLayout>
+      <div className="page-content">
+        {hero}
+        <div className="page-header">
+          <div>
+            <h1>{title}</h1>
+            {subtitle && <p className="page-subtitle">{subtitle}</p>}
           </div>
-          {children}
+          {actions && <div className="page-header-actions">{actions}</div>}
         </div>
+        {children}
       </div>
-    </div>
+    </ResponsiveLayout>
   );
 }

@@ -24,7 +24,7 @@ export default function Topbar() {
           </div>
         </div>
 
-        <div className="input-group" style={{ marginLeft: 'var(--sp-6)', maxWidth: 360, flex: 1 }}>
+        <div className="input-group topbar-search" style={{ maxWidth: 360, flex: 1 }}>
           <Search size={16} className="input-prefix" />
           <input
             className="search-input"
@@ -39,7 +39,7 @@ export default function Topbar() {
         </button>
         <button className="btn btn-primary btn-sm">
           <Plus size={14} strokeWidth={2.5} />
-          New event
+          <span>New event</span>
         </button>
       </div>
     </header>

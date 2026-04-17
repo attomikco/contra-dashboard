@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   description: 'Community operations dashboard for Contra event hosts.',
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: {
